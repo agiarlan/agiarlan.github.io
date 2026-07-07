@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Agiarlan - Portofolio</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Portofolio">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/style.css')?>">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<style>
+		:root { --brand-primary: #295af3; }
+		body { font-family: 'Inter', 'Space Grotesk', sans-serif; }
+		.font-display { font-family: 'Outfit', 'Space Grotesk', sans-serif; }
+		/* Tab active indicator */
+		.nav-link-active { color: #fff !important; }
+		.nav-link-active::after { width: 100% !important; }
+		/* Gradient separator */
+		.section-sep { background: linear-gradient(90deg, transparent, rgba(41,90,243,0.35), rgba(139,92,246,0.35), transparent); height: 1px; }
+		/* Chip hover glow */
+		.chip-glow:hover { box-shadow: 0 0 16px rgba(41,90,243,0.4); border-color: rgba(41,90,243,0.5) !important; }
+		/* Pricing highlight ring */
+		.plan-highlight { box-shadow: 0 0 0 1px rgba(41,90,243,0.5), 0 24px 64px rgba(41,90,243,0.2); }
+	</style>
+</head>
+<body class="bg-slate-950 selection:bg-brand-500/30 selection:text-white overflow-x-hidden antialiased">
+	<div id="scrollProgress" class="scroll-progress" style="width: 0%"></div>
+
+	<div class="fixed top-6 left-0 right-0 z-50 flex justify-center px-6">
+		<nav id="navbar" class="glass-header px-8 py-3.5 flex items-center gap-10 transition-all duration-500">
+			<div class="flex items-center space-x-2.5 no-underline group flex-shrink-0">
+				<span class="text-xl font-bold tracking-tight text-white">Be<span class="text-gradient-brand">randa</span></span>
+			</div>
+			<div class="hidden md:flex items-center space-x-8">
+				<a href="#aboutme" class="text-sm font-semibold text-slate-400 hover:text-white transition-colors no-underline relative group/nav">Tentang Saya<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-brand-400 group-hover/nav:w-full transition-all duration-300"></span></a>
+				<a href="#services" class="text-sm font-semibold text-slate-400 hover:text-white transition-colors no-underline relative group/nav">Portofolio<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-brand-400 group-hover/nav:w-full transition-all duration-300"></span></a>
+				<a href="#contact" class="text-sm font-semibold text-slate-400 hover:text-white transition-colors no-underline relative group/nav">Kontak<span class="absolute -bottom-0.5 left-0 w-0 h-px bg-brand-400 group-hover/nav:w-full transition-all duration-300"></span></a>
+			</div>
+		</nav>
+	</div>
+
+	<main class="relative bg-slate-950 pt-32">
+		<section class="flex flex-col items-center justify-center text-center py-20 relative bg-slate-950">
+			<div data-aos="fade-up" data-aos-duration="900" class="relative z-10 max-w-5xl" style="z-index:2;">
+				<h1 class="font-display tracking-[-0.04em] leading-[0.88] text-7xl md:text-[8.5rem] mb-8">
+					<span class="text-shimmer">Agi Arlan</span><br>
+					<span class="text-white">IT </span><span class="text-gradient-brand">Programmer</span>
+				</h1>
+				<p class="max-w-xl mx-auto text-lg text-slate-400 font-medium leading-relaxed mb-14">
+					Hai semua, ini adalah Portofolio saya yang menampilkan project mandiri dan konstibusi saya sebagai pengembang di bidang Teknologi.
+				</p>
+			</div>
+
+			<div class="mt-28 relative max-w-5xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+				<div class="absolute inset-x-10 -bottom-10 h-1/2 bg-brand-500/10 blur-3xl rounded-full pointer-events-none"></div>
+				<img src="<?= base_url('assets/img/profile/agiArlan.png')?>" alt="Platform Preview" class="w-18 h-18 object-cover block">
+			</div>
+		</section>
+
+		<div class="py-8 border-y border-white/5 bg-slate-900/30 overflow-hidden relative">
+			<div class="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-slate-950 to-transparent pointer-events-none"></div>
+			<div class="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-slate-950 to-transparent pointer-events-none"></div>
+			<div class="marquee-track gap-0 items-center">
+				<?php
+				$features = [
+					['icon' => 'fa-brands fa-php', 'label' => 'Php Framework'],
+					['icon' => 'fa-brands fa-node-js', 'label' => 'NodeJs Runtime'],
+					['icon' => 'fa-chart-line', 'label' => 'Advanced Analytics'],
+					['icon' => 'fa-brands fa-css3-alt', 'label' => 'Tailwindcss'],
+					['icon' => 'fa-brands fa-bootstrap', 'label' => 'Bootstrap'],
+					['icon' => 'fa-solid fa-code', 'label' => 'Clean code'],
+					['icon' => 'fa-brands fa-connectdevelop', 'label' => 'Custom code'],
+					['icon' => 'fa-plug', 'label' => 'API Integrations'],
+					['icon' => 'fa-brands fa-php', 'label' => 'Php Framework'],
+					['icon' => 'fa-brands fa-node-js', 'label' => 'NodeJs Runtime'],
+					['icon' => 'fa-chart-line', 'label' => 'Advanced Analytics'],
+					['icon' => 'fa-brands fa-css3-alt', 'label' => 'Tailwindcss'],
+					['icon' => 'fa-brands fa-bootstrap', 'label' => 'Bootstrap'],
+					['icon' => 'fa-solid fa-code', 'label' => 'Clean code'],
+					['icon' => 'fa-brands fa-connectdevelop', 'label' => 'Custom code'],
+					['icon' => 'fa-plug', 'label' => 'API Integrations'],
+				];
+				foreach($features as $f): ?>
+				<div class="flex items-center gap-3 px-8 flex-shrink-0">
+					<i class="fas <?= $f['icon'] ?> text-brand-500 text-xs"></i>
+					<span class="text-sm font-semibold text-slate-400 whitespace-nowrap"><?= $f['label'] ?></span>
+					<span class="ml-6 text-white/10 text-xl font-thin">|</span>
+				</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+
+		<section class="py-24 bg-slate-950 relative overflow-hidden" id="aboutme">
+			<div class="absolute inset-0 aurora opacity-70"></div>
+			<div class="section-container relative z-10">
+				<div class="text-center mb-24" data-aos="fade-up">
+					<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6">
+						<i class="fas fa-map-signs text-brand-400 text-xs"></i>
+					</div>
+					<h2 class="font-display tracking-tight leading-tight text-5xl md:text-7xl text-white">Tentang <span class="text-gradient-brand">Saya</span></h2>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
+					<?php
+					$steps = [
+						['icon'=>'fa-solid fa-code-commit','color'=>'from-brand-500 to-brand-700','shadow'=>'shadow-brand-500/30','title'=>'IT Programmer','desc'=>'Saya seorang <b>IT Programmer</b> disebuah Instansi kesehatan di Tangerang kabupaten. Dengan beberapa tahun pengalaman dalam pengembangan perangkat lunak berbasis web.'],
+						['icon'=>'fa-gear','color'=>'from-violet-500 to-violet-700','shadow'=>'shadow-violet-500/30','title'=>'Spesialisasi & *Tech Stack* Inti','desc'=>'Arsitekture dalam spesialisasi saya pengembangan sistem menggunakan <b>PHP</b> dengan framework <b>Codeigniter</b> dan terkadang <b>Laravel</b>. Keahlian saya meliputi : <ul style="font-size: 12px;" class="text-slate-400"><li><b>Backend</b> : Php (Codeigniter, Laravel), Server-side (Javascript), RESTFull API Development.</li><li><b>Database</b> : Mysql/MariaDb, PostGre. (Perancangan, Normalisasi dan Query Optimization).</li><li><b>Frontend</b> : Html, CSS, Javascript termasuk (Utilitas framework seperti Bootstrap, Tailwind).</li><li><b>Metodologi</b> : Clean Code dan Software Development Live Cycle (SDLC).</li></ul>'],
+						['icon'=>'fa-rocket','color'=>'from-emerald-500 to-teal-700','shadow'=>'shadow-emerald-500/30','title'=>'Konstribusi Profesional','desc'=>'Bertanggung jawab dalam siklus pengembangan aplikasi internal Instansi. Kontribusi saya mencakup penambahan dan perubahan module dalam aplikasi, ataupun pembukaan API untuk pihak luar instansi untuk mengolah data sesuai ketentuan yang berlaku guna, meningkatkan efisiensi operasional dan mendukung pengambilan keputusan berbasis data.'],
+						['icon'=>'fa-solid fa-code-merge','color'=>'from-violet-500 to-violet-700','shadow'=>'shadow-indigo-500/30','title'=>'Mari Terkoneksi','desc'=>'Saya selalu terbuka untuk kolaborasi, diskusi dan atau peluang profesional baru dalam kemajuan teknologi dunia yang semakin pesat.'],
+					];
+					foreach($steps as $i => $step): ?>
+					<div class="card-glow group" data-aos="fade-up" data-aos-delay="<?= $i * 150 ?>">
+						<div class="card-glow-inner text-center">
+							<div class="relative inline-flex mb-8">
+								<div class="w-20 h-20 rounded-2xl bg-gradient-to-br <?= $step['color'] ?> flex items-center justify-center text-white text-2xl shadow-2xl <?= $step['shadow'] ?> group-hover:scale-110 transition-transform duration-300">
+									<i class="fas <?= $step['icon'] ?>"></i>
+								</div>
+							</div>
+							<h3 class="text-xl font-bold text-white mb-3"><?= $step['title'] ?></h3>
+							<p class="text-slate-400 text-sm leading-relaxed"><?= $step['desc'] ?></p>
+						</div>
+					</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-24 relative overflow-hidden" id="services">
+			<div class="absolute inset-0 -z-0 bg-[radial-gradient(60%_80%_at_80%_50%,rgba(120,50,243,0.05)_0%,transparent_100%)]"></div>
+			<div class="section-container relative z-10">
+				<div class="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+					<div class="max-w-2xl" data-aos="fade-right">
+						<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/8 mb-6">
+							<i class="fa-regular fa-folder-open text-brand-400 text-xs"></i>
+						</div>
+						<h2 class="text-display text-5xl md:text-7xl">Portofolio, <br><span class="text-gradient-brand">Project</span></h2>
+					</div>
+					<div class="flex items-center gap-4" data-aos="fade-left">
+						<div class="w-12 h-px bg-gradient-to-r from-brand-500 to-transparent"></div>
+						<p class="text-slate-500 font-semibold uppercase tracking-widest text-[10px]">Berikut beberapa project yang pernah dibuat dan dikembangkan</p>
+					</div>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<?php 
+					$services = [
+						[
+							'title' => 'Ritel POS',
+							'icon' => 'fa-shopping-cart',
+							'color' => 'from-brand-500/20 to-brand-600/5',
+							'icon_color' => 'text-brand-400',
+							'badge_color' => 'bg-brand-500/10 border-brand-500/20 text-brand-400',
+							'badge' => 'POS Sistem',
+							'desc' => 'Management produk. stok dan pelaporan yang dikembangkan secara universal dan multi-toko dalam 1 sistem terintegrasi.',
+							'image' => base_url('assets/img/project/pos.png')
+						],
+						[
+							'title' => 'Kasir',
+							'icon' => 'fa-solid fa-cash-register',
+							'color' => 'from-violet-500/20 to-violet-600/5',
+							'icon_color' => 'text-violet-400',
+							'badge_color' => 'bg-violet-500/10 border-violet-500/20 text-violet-400',
+							'badge' => 'Transaksi',
+							'desc' => 'Siklus pengeluaran barang yang telah terstok pada sistem POS yang akan terekam dan kembali dalam bentuk laporan real-time.',
+							'image' => base_url('assets/img/project/kasir.png')
+						],
+						[
+							'title' => 'E-Commerce',
+							'icon' => 'fa-solid fa-dumpster',
+							'color' => 'from-emerald-500/20 to-emerald-600/5',
+							'icon_color' => 'text-emerald-400',
+							'badge_color' => 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400',
+							'badge' => 'Mini Ecommerce',
+							'desc' => 'Peralihan kecil dari raja ecommerce yang tersusun atas management produksi pada aplikasi POS yang di visualisasikan secara familiar dan sudah terintegrasi dengan payment gateway.',
+							'image' => base_url('assets/img/project/ecommerce.png')
+						],
+						[
+							'title' => 'SIMRS',
+							'icon' => 'fa-solid fa-hospital',
+							'color' => 'from-emerald-500/20 to-emerald-600/5',
+							'icon_color' => 'text-emerald-400',
+							'badge_color' => 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400',
+							'badge' => 'Sistem informasi RS',
+							'desc' => 'SIMRS, mengatur semua data internal perusahaan Rumah sakit dari mulai data pasien, pendaftaran, pelayanan rawat jalan atau inap serta masih banyak yang terjadi sampai menuju proses peng claim-an.',
+							'image' => base_url('assets/img/project/simrs.png')
+						],[
+							'title' => 'RME',
+							'icon' => 'fa-solid fa-laptop-medical',
+							'color' => 'from-violet-500/20 to-violet-600/5',
+							'icon_color' => 'text-violet-400',
+							'badge_color' => 'bg-violet-500/10 border-violet-500/20 text-violet-400',
+							'badge' => 'Rekamedis Elektronik',
+							'desc' => 'Sistem yang dikhususkan untuk para Nakes melakukan SOAP pasien pada pelayanan Rumah sakit.',
+							'image' => base_url('assets/img/project/rme.png')
+						],[
+							'title' => 'Open API',
+							'icon' => 'fa-solid fa-plug',
+							'color' => 'from-brand-500/20 to-brand-600/5',
+							'icon_color' => 'text-brand-400',
+							'badge_color' => 'bg-brand-500/10 border-brand-500/20 text-brand-400',
+							'badge' => 'Integrasi data',
+							'desc' => 'Membuka API untuk mengintegrasikan data ke birokrasi terkait guna pembuatan dashboard eksekutif yang diperuntukan untuk analisis dan pengambilan keputusan.',
+							'image' => base_url('assets/img/project/openapi.png')
+						]
+					];
+					foreach($services as $index => $s): ?>
+					<div class="card-glow group" data-aos="fade-up" data-aos-delay="<?= $index * 120 ?>">
+						<div class="card-glow-inner flex flex-col h-full">
+							<div class="flex items-start justify-between mb-8">
+								<div class="w-14 h-14 bg-gradient-to-br <?= $s['color'] ?> rounded-2xl flex items-center justify-center <?= $s['icon_color'] ?> text-xl border border-white/5 group-hover:scale-110 transition-transform duration-300">
+									<i class="fas <?= $s['icon'] ?>"></i>
+								</div>
+								<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border <?= $s['badge_color'] ?>"><?= $s['badge'] ?></span>
+							</div>
+							<h3 class="text-2xl font-bold mb-3 text-white"><?= $s['title'] ?></h3>
+							<p class="text-slate-400 font-medium leading-relaxed mb-8 grow text-sm"><?= $s['desc'] ?></p>
+							<div class="rounded-2xl overflow-hidden aspect-video bg-slate-800 mb-6 border border-white/5 relative">
+								<img src="<?= $s['image']?>" alt="" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+								<div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
+							</div>
+						</div>
+					</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</section>
+
+		<footer class="py-24 bg-slate-950 border-t border-white/5 relative overflow-hidden" id="contact">
+			<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+			<div class="section-container relative z-10">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-20 items-center">
+					<div class="space-y-8" data-aos="fade-right">
+						<h2 class="text-display text-5xl md:text-7xl">Siap untuk ke <br><span class="text-gradient-brand">Level selanjutnya?</span></h2>
+						<div class="flex items-center gap-4">
+							<?php
+							$socials = [
+								['icon' => 'fa-instagram', 'href' => 'https://www.instagram.com/secret.s3rvices'],
+								['icon' => 'fa-twitter', 'href' => 'https://x.com/agiarlan11'],
+								['icon' => 'fa-linkedin', 'href' => 'https://www.linkedin.com/in/agi-arlan-72117a199'],
+								['icon' => 'fa-whatsapp', 'href' => 'https://wa.me/62895330412018'],
+							];
+							foreach($socials as $s): ?>
+							<a href="<?= $s['href'] ?>" class="w-11 h-11 rounded-xl bg-slate-900 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-500/20 hover:border-brand-500/30 transition-all duration-300 no-underline">
+								<i class="fab <?= $s['icon'] ?> text-sm"></i>
+							</a>
+							<?php endforeach; ?>
+						</div>
+					</div>
+					
+					<div class="card-glow" data-aos="fade-left">
+						<div class="card-glow-inner">
+							<h3 class="text-xl font-bold mb-1 text-white">Tetap terupdate.</h3>
+							<p class="text-slate-500 text-sm mb-8">Portofolio Pribadi menampilkan koleksi proyek dan keahlian yang telah dikembangkan selama berkarir di dunia pemrograman.</p>
+							<form id="subscribeData" class="space-y-4">
+								<button type="button" onclick="subscribe()" class="btn-primary w-full justify-center text-sm">
+									Hubungi saya langsung <i class="fas fa-arrow-right text-xs"></i>
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<div class="pt-4 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+					<div class="flex items-center gap-2.5">
+						<div class="w-7 h-7 bg-gradient-to-br from-brand-400 to-brand-600 rounded-lg flex items-center justify-center shadow-lg shadow-brand-500/20">
+							<span class="text-white font-black text-xs">AA</span>
+						</div>
+						<span class="text-sm font-bold text-white uppercase tracking-wider">AgiArlan</span>
+					</div>
+					
+					<p class="text-slate-600 text-[11px] font-semibold uppercase tracking-widest text-center">
+						© 2025 All Rights Reserved · Designed by <a href="https://www.instagram.com/secret.s3rvices" class="text-brand-500/80 hover:text-brand-400 transition-colors" target="_blank">Agi Arlan</a>
+					</p>
+				</div>
+			</div>
+		</footer>
+	</main>
+
+	<!-- Scripts -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+	<script type="text/javascript">
+		$(function(){
+			AOS.init({ duration: 800, once: true, offset: 40 });
+		});
+		
+		function subscribe(){
+			window.open("https://wa.me/62895330412018?text=Halo%20saya%20ingin%20berbincang%20dengan%20anda", "_blank");
+		}
+	</script>
+
+	<script type="text/javascript">
+		/* ========== SCROLL PROGRESS ========== */
+		window.addEventListener('scroll', () => {
+			const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+			document.getElementById('scrollProgress').style.width = ((scrollTop / height) * 100) + '%';
+
+			/* Navbar shrink on scroll */
+			const nav = document.getElementById('navbar');
+			if (scrollTop > 60) {
+				nav.style.paddingTop = '0.6rem';
+				nav.style.paddingBottom = '0.6rem';
+			} else {
+				nav.style.paddingTop = '';
+				nav.style.paddingBottom = '';
+			}
+		});
+
+		/* ========== AOS INIT ========== */
+		$(function(){
+			AOS.init({ duration: 800, once: true, offset: 40 });
+		});
+
+		/* ========== HERO MOUSE SPOTLIGHT ========== */
+		(function() {
+			const hero = document.querySelector('section.aurora');
+			const spotlight = document.getElementById('hero-spotlight');
+			if (!hero || !spotlight) return;
+			hero.addEventListener('mousemove', (e) => {
+				const rect = hero.getBoundingClientRect();
+				const x = ((e.clientX - rect.left) / rect.width) * 100;
+				const y = ((e.clientY - rect.top) / rect.height) * 100;
+				spotlight.style.background = `radial-gradient(400px circle at ${x}% ${y}%, rgba(41,90,243,0.13) 0%, transparent 70%)`;
+			});
+			hero.addEventListener('mouseleave', () => {
+				spotlight.style.background = 'radial-gradient(400px circle at 50% 50%, rgba(41,90,243,0.08) 0%, transparent 70%)';
+			});
+		})();
+
+		/* ========== 3D CARD TILT ========== */
+		(function() {
+			const cards = document.querySelectorAll('.card-glow');
+			cards.forEach(card => {
+				card.addEventListener('mousemove', (e) => {
+					const rect = card.getBoundingClientRect();
+					const x = e.clientX - rect.left;
+					const y = e.clientY - rect.top;
+					const cx = rect.width / 2;
+					const cy = rect.height / 2;
+					const rotX = ((y - cy) / cy) * -7;
+					const rotY = ((x - cx) / cx) * 7;
+					card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02,1.02,1.02)`;
+					card.style.transition = 'transform 0.05s linear';
+
+					/* Card inner spotlight */
+					const pctX = (x / rect.width) * 100;
+					const pctY = (y / rect.height) * 100;
+					card.style.background = `radial-gradient(circle at ${pctX}% ${pctY}%, rgba(255,255,255,0.05) 0%, transparent 60%), linear-gradient(to bottom right, rgba(255,255,255,0.1), transparent, rgba(41,90,243,0.2))`;
+				});
+				card.addEventListener('mouseleave', () => {
+					card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+					card.style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1)';
+					card.style.background = '';
+				});
+			});
+		})();
+
+		/* ========== ANIMATED STAT COUNTERS ========== */
+		(function() {
+			const counters = document.querySelectorAll('[data-counter]');
+			if (!counters.length) return;
+			const obs = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (!entry.isIntersecting) return;
+					const el = entry.target;
+					const target = parseFloat(el.dataset.counter);
+					const suffix = el.dataset.suffix;
+					if (target === 0) return; /* skip static ones like 0.2s, 24/7 */
+					let start = 0;
+					const duration = 1800;
+					const step = 16;
+					const increment = target / (duration / step);
+					const timer = setInterval(() => {
+						start += increment;
+						if (start >= target) {
+							el.textContent = (Number.isInteger(target) ? Math.ceil(start) : target.toFixed(1)) + suffix;
+							clearInterval(timer);
+						} else {
+							el.textContent = (Number.isInteger(target) ? Math.floor(start) : start.toFixed(1)) + suffix;
+						}
+					}, step);
+					obs.unobserve(el);
+				});
+			}, { threshold: 0.5 });
+			counters.forEach(el => obs.observe(el));
+		})();
+
+		/* ========== TYPEWRITER ON HERO BADGE ========== */
+		(function() {
+			const el = document.querySelector('[data-typewriter]');
+			if (!el) return;
+			const phrases = ['Platform v3.5 — Now Live', 'Precision. Speed. Scale.', 'Trusted by 500+ Businesses', 'Built for the Future.'];
+			let phraseIdx = 0, charIdx = 0, deleting = false;
+			function tick() {
+				const phrase = phrases[phraseIdx];
+				if (deleting) {
+					el.textContent = phrase.substring(0, charIdx--);
+					if (charIdx < 0) { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; charIdx = 0; setTimeout(tick, 600); return; }
+					setTimeout(tick, 40);
+				} else {
+					el.textContent = phrase.substring(0, ++charIdx);
+					if (charIdx === phrase.length) { deleting = true; setTimeout(tick, 2000); return; }
+					setTimeout(tick, 70);
+				}
+			}
+			setTimeout(tick, 1500);
+		})();
+
+		function subscribe(){
+			window.open("https://wa.me/62895330412018?text=Halo%20saya%20ingin%20berbincang%20dengan%20anda", "_blank");
+		}
+	</script>
+</body>
+</html>
+
