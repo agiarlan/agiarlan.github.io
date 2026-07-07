@@ -64,33 +64,7 @@
 		<div class="py-8 border-y border-white/5 bg-slate-900/30 overflow-hidden relative">
 			<div class="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-slate-950 to-transparent pointer-events-none"></div>
 			<div class="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-slate-950 to-transparent pointer-events-none"></div>
-			<div class="marquee-track gap-0 items-center">
-				<?php
-				$features = [
-					['icon' => 'fa-brands fa-php', 'label' => 'Php Framework'],
-					['icon' => 'fa-brands fa-node-js', 'label' => 'NodeJs Runtime'],
-					['icon' => 'fa-chart-line', 'label' => 'Advanced Analytics'],
-					['icon' => 'fa-brands fa-css3-alt', 'label' => 'Tailwindcss'],
-					['icon' => 'fa-brands fa-bootstrap', 'label' => 'Bootstrap'],
-					['icon' => 'fa-solid fa-code', 'label' => 'Clean code'],
-					['icon' => 'fa-brands fa-connectdevelop', 'label' => 'Custom code'],
-					['icon' => 'fa-plug', 'label' => 'API Integrations'],
-					['icon' => 'fa-brands fa-php', 'label' => 'Php Framework'],
-					['icon' => 'fa-brands fa-node-js', 'label' => 'NodeJs Runtime'],
-					['icon' => 'fa-chart-line', 'label' => 'Advanced Analytics'],
-					['icon' => 'fa-brands fa-css3-alt', 'label' => 'Tailwindcss'],
-					['icon' => 'fa-brands fa-bootstrap', 'label' => 'Bootstrap'],
-					['icon' => 'fa-solid fa-code', 'label' => 'Clean code'],
-					['icon' => 'fa-brands fa-connectdevelop', 'label' => 'Custom code'],
-					['icon' => 'fa-plug', 'label' => 'API Integrations'],
-				];
-				foreach($features as $f): ?>
-				<div class="flex items-center gap-3 px-8 flex-shrink-0">
-					<i class="fas <?= $f['icon'] ?> text-brand-500 text-xs"></i>
-					<span class="text-sm font-semibold text-slate-400 whitespace-nowrap"><?= $f['label'] ?></span>
-					<span class="ml-6 text-white/10 text-xl font-thin">|</span>
-				</div>
-				<?php endforeach; ?>
+			<div id="marquee-track" class="marquee-track gap-0 items-center">
 			</div>
 		</div>
 
@@ -103,27 +77,7 @@
 					</div>
 					<h2 class="font-display tracking-tight leading-tight text-5xl md:text-7xl text-white">Tentang <span class="text-gradient-brand">Saya</span></h2>
 				</div>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
-					<?php
-					$steps = [
-						['icon'=>'fa-solid fa-code-commit','color'=>'from-brand-500 to-brand-700','shadow'=>'shadow-brand-500/30','title'=>'IT Programmer','desc'=>'Saya seorang <b>IT Programmer</b> disebuah Instansi kesehatan di Tangerang kabupaten. Dengan beberapa tahun pengalaman dalam pengembangan perangkat lunak berbasis web.'],
-						['icon'=>'fa-gear','color'=>'from-violet-500 to-violet-700','shadow'=>'shadow-violet-500/30','title'=>'Spesialisasi & *Tech Stack* Inti','desc'=>'Arsitekture dalam spesialisasi saya pengembangan sistem menggunakan <b>PHP</b> dengan framework <b>Codeigniter</b> dan terkadang <b>Laravel</b>. Keahlian saya meliputi : <ul style="font-size: 12px;" class="text-slate-400"><li><b>Backend</b> : Php (Codeigniter, Laravel), Server-side (Javascript), RESTFull API Development.</li><li><b>Database</b> : Mysql/MariaDb, PostGre. (Perancangan, Normalisasi dan Query Optimization).</li><li><b>Frontend</b> : Html, CSS, Javascript termasuk (Utilitas framework seperti Bootstrap, Tailwind).</li><li><b>Metodologi</b> : Clean Code dan Software Development Live Cycle (SDLC).</li></ul>'],
-						['icon'=>'fa-rocket','color'=>'from-emerald-500 to-teal-700','shadow'=>'shadow-emerald-500/30','title'=>'Konstribusi Profesional','desc'=>'Bertanggung jawab dalam siklus pengembangan aplikasi internal Instansi. Kontribusi saya mencakup penambahan dan perubahan module dalam aplikasi, ataupun pembukaan API untuk pihak luar instansi untuk mengolah data sesuai ketentuan yang berlaku guna, meningkatkan efisiensi operasional dan mendukung pengambilan keputusan berbasis data.'],
-						['icon'=>'fa-solid fa-code-merge','color'=>'from-violet-500 to-violet-700','shadow'=>'shadow-indigo-500/30','title'=>'Mari Terkoneksi','desc'=>'Saya selalu terbuka untuk kolaborasi, diskusi dan atau peluang profesional baru dalam kemajuan teknologi dunia yang semakin pesat.'],
-					];
-					foreach($steps as $i => $step): ?>
-					<div class="card-glow group" data-aos="fade-up" data-aos-delay="<?= $i * 150 ?>">
-						<div class="card-glow-inner text-center">
-							<div class="relative inline-flex mb-8">
-								<div class="w-20 h-20 rounded-2xl bg-gradient-to-br <?= $step['color'] ?> flex items-center justify-center text-white text-2xl shadow-2xl <?= $step['shadow'] ?> group-hover:scale-110 transition-transform duration-300">
-									<i class="fas <?= $step['icon'] ?>"></i>
-								</div>
-							</div>
-							<h3 class="text-xl font-bold text-white mb-3"><?= $step['title'] ?></h3>
-							<p class="text-slate-400 text-sm leading-relaxed"><?= $step['desc'] ?></p>
-						</div>
-					</div>
-					<?php endforeach; ?>
+				<div id="aboutme-links" class="grid grid-cols-1 md:grid-cols-2 gap-4 relative">
 				</div>
 			</div>
 		</section>
@@ -143,86 +97,7 @@
 						<p class="text-slate-500 font-semibold uppercase tracking-widest text-[10px]">Berikut beberapa project yang pernah dibuat dan dikembangkan</p>
 					</div>
 				</div>
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-					<?php 
-					$services = [
-						[
-							'title' => 'Ritel POS',
-							'icon' => 'fa-shopping-cart',
-							'color' => 'from-brand-500/20 to-brand-600/5',
-							'icon_color' => 'text-brand-400',
-							'badge_color' => 'bg-brand-500/10 border-brand-500/20 text-brand-400',
-							'badge' => 'POS Sistem',
-							'desc' => 'Management produk. stok dan pelaporan yang dikembangkan secara universal dan multi-toko dalam 1 sistem terintegrasi.',
-							'image' => base_url('assets/img/project/pos.png')
-						],
-						[
-							'title' => 'Kasir',
-							'icon' => 'fa-solid fa-cash-register',
-							'color' => 'from-violet-500/20 to-violet-600/5',
-							'icon_color' => 'text-violet-400',
-							'badge_color' => 'bg-violet-500/10 border-violet-500/20 text-violet-400',
-							'badge' => 'Transaksi',
-							'desc' => 'Siklus pengeluaran barang yang telah terstok pada sistem POS yang akan terekam dan kembali dalam bentuk laporan real-time.',
-							'image' => base_url('assets/img/project/kasir.png')
-						],
-						[
-							'title' => 'E-Commerce',
-							'icon' => 'fa-solid fa-dumpster',
-							'color' => 'from-emerald-500/20 to-emerald-600/5',
-							'icon_color' => 'text-emerald-400',
-							'badge_color' => 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400',
-							'badge' => 'Mini Ecommerce',
-							'desc' => 'Peralihan kecil dari raja ecommerce yang tersusun atas management produksi pada aplikasi POS yang di visualisasikan secara familiar dan sudah terintegrasi dengan payment gateway.',
-							'image' => base_url('assets/img/project/ecommerce.png')
-						],
-						[
-							'title' => 'SIMRS',
-							'icon' => 'fa-solid fa-hospital',
-							'color' => 'from-emerald-500/20 to-emerald-600/5',
-							'icon_color' => 'text-emerald-400',
-							'badge_color' => 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400',
-							'badge' => 'Sistem informasi RS',
-							'desc' => 'SIMRS, mengatur semua data internal perusahaan Rumah sakit dari mulai data pasien, pendaftaran, pelayanan rawat jalan atau inap serta masih banyak yang terjadi sampai menuju proses peng claim-an.',
-							'image' => base_url('assets/img/project/simrs.png')
-						],[
-							'title' => 'RME',
-							'icon' => 'fa-solid fa-laptop-medical',
-							'color' => 'from-violet-500/20 to-violet-600/5',
-							'icon_color' => 'text-violet-400',
-							'badge_color' => 'bg-violet-500/10 border-violet-500/20 text-violet-400',
-							'badge' => 'Rekamedis Elektronik',
-							'desc' => 'Sistem yang dikhususkan untuk para Nakes melakukan SOAP pasien pada pelayanan Rumah sakit.',
-							'image' => base_url('assets/img/project/rme.png')
-						],[
-							'title' => 'Open API',
-							'icon' => 'fa-solid fa-plug',
-							'color' => 'from-brand-500/20 to-brand-600/5',
-							'icon_color' => 'text-brand-400',
-							'badge_color' => 'bg-brand-500/10 border-brand-500/20 text-brand-400',
-							'badge' => 'Integrasi data',
-							'desc' => 'Membuka API untuk mengintegrasikan data ke birokrasi terkait guna pembuatan dashboard eksekutif yang diperuntukan untuk analisis dan pengambilan keputusan.',
-							'image' => base_url('assets/img/project/openapi.png')
-						]
-					];
-					foreach($services as $index => $s): ?>
-					<div class="card-glow group" data-aos="fade-up" data-aos-delay="<?= $index * 120 ?>">
-						<div class="card-glow-inner flex flex-col h-full">
-							<div class="flex items-start justify-between mb-8">
-								<div class="w-14 h-14 bg-gradient-to-br <?= $s['color'] ?> rounded-2xl flex items-center justify-center <?= $s['icon_color'] ?> text-xl border border-white/5 group-hover:scale-110 transition-transform duration-300">
-									<i class="fas <?= $s['icon'] ?>"></i>
-								</div>
-								<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border <?= $s['badge_color'] ?>"><?= $s['badge'] ?></span>
-							</div>
-							<h3 class="text-2xl font-bold mb-3 text-white"><?= $s['title'] ?></h3>
-							<p class="text-slate-400 font-medium leading-relaxed mb-8 grow text-sm"><?= $s['desc'] ?></p>
-							<div class="rounded-2xl overflow-hidden aspect-video bg-slate-800 mb-6 border border-white/5 relative">
-								<img src="<?= $s['image']?>" alt="" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
-								<div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
-							</div>
-						</div>
-					</div>
-					<?php endforeach; ?>
+				<div id="services-links" class="grid grid-cols-1 md:grid-cols-3 gap-8">
 				</div>
 			</div>
 		</section>
@@ -233,19 +108,7 @@
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-20 items-center">
 					<div class="space-y-8" data-aos="fade-right">
 						<h2 class="text-display text-5xl md:text-7xl">Siap untuk ke <br><span class="text-gradient-brand">Level selanjutnya?</span></h2>
-						<div class="flex items-center gap-4">
-							<?php
-							$socials = [
-								['icon' => 'fa-instagram', 'href' => 'https://www.instagram.com/secret.s3rvices'],
-								['icon' => 'fa-twitter', 'href' => 'https://x.com/agiarlan11'],
-								['icon' => 'fa-linkedin', 'href' => 'https://www.linkedin.com/in/agi-arlan-72117a199'],
-								['icon' => 'fa-whatsapp', 'href' => 'https://wa.me/62895330412018'],
-							];
-							foreach($socials as $s): ?>
-							<a href="<?= $s['href'] ?>" class="w-11 h-11 rounded-xl bg-slate-900 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-500/20 hover:border-brand-500/30 transition-all duration-300 no-underline">
-								<i class="fab <?= $s['icon'] ?> text-sm"></i>
-							</a>
-							<?php endforeach; ?>
+						<div id="social-links" class="flex items-center gap-4">
 						</div>
 					</div>
 					
@@ -284,6 +147,239 @@
 	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
 	<script type="text/javascript">
+		const socials = [
+			{
+				icon: "fa-instagram",
+				href: "https://www.instagram.com/secret.s3rvices"
+			},
+			{
+				icon: "fa-twitter",
+				href: "https://x.com/agiarlan11"
+			},
+			{
+				icon: "fa-linkedin",
+				href: "https://www.linkedin.com/in/agi-arlan-72117a199"
+			},
+			{
+				icon: "fa-whatsapp",
+				href: "https://wa.me/62895330412018"
+			}
+		];
+
+		document.getElementById("social-links").innerHTML = socials.map(s => `
+			<a href="${s.href}"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="w-11 h-11 rounded-xl bg-slate-900 border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-brand-500/20 hover:border-brand-500/30 transition-all duration-300 no-underline">
+				<i class="fab ${s.icon} text-sm"></i>
+			</a>`).join('');
+			
+		const services = [
+			{
+				title: "Ritel POS",
+				icon: "fa-shopping-cart",
+				color: "from-brand-500/20 to-brand-600/5",
+				iconColor: "text-brand-400",
+				badgeColor: "bg-brand-500/10 border-brand-500/20 text-brand-400",
+				badge: "POS Sistem",
+				desc: "Management produk, stok dan pelaporan yang dikembangkan secara universal dan multi-toko dalam 1 sistem terintegrasi.",
+				image: `assets/img/project/pos.png`
+			},
+			{
+				title: "Kasir",
+				icon: "fa-cash-register",
+				color: "from-violet-500/20 to-violet-600/5",
+				iconColor: "text-violet-400",
+				badgeColor: "bg-violet-500/10 border-violet-500/20 text-violet-400",
+				badge: "Transaksi",
+				desc: "Siklus pengeluaran barang yang telah terstok pada sistem POS yang akan terekam dan kembali dalam bentuk laporan real-time.",
+				image: `assets/img/project/kasir.png`
+			},
+			{
+				title: "E-Commerce",
+				icon: "fa-dumpster",
+				color: "from-emerald-500/20 to-emerald-600/5",
+				iconColor: "text-emerald-400",
+				badgeColor: "bg-emerald-500/10 border-emerald-500/20 text-emerald-400",
+				badge: "Mini Ecommerce",
+				desc: "Peralihan kecil dari raja ecommerce yang tersusun atas management produksi pada aplikasi POS yang divisualisasikan secara familiar dan sudah terintegrasi dengan payment gateway.",
+				image: `assets/img/project/ecommerce.png`
+			},
+			{
+				title: "SIMRS",
+				icon: "fa-hospital",
+				color: "from-emerald-500/20 to-emerald-600/5",
+				iconColor: "text-emerald-400",
+				badgeColor: "bg-emerald-500/10 border-emerald-500/20 text-emerald-400",
+				badge: "Sistem Informasi RS",
+				desc: "SIMRS mengatur seluruh data internal rumah sakit mulai dari data pasien, pendaftaran, pelayanan rawat jalan/rawat inap hingga proses klaim.",
+				image: `assets/img/project/simrs.png`
+			},
+			{
+				title: "RME",
+				icon: "fa-laptop-medical",
+				color: "from-violet-500/20 to-violet-600/5",
+				iconColor: "text-violet-400",
+				badgeColor: "bg-violet-500/10 border-violet-500/20 text-violet-400",
+				badge: "Rekam Medis Elektronik",
+				desc: "Sistem yang dikhususkan bagi tenaga kesehatan untuk melakukan SOAP pasien pada pelayanan rumah sakit.",
+				image: `assets/img/project/rme.png`
+			},
+			{
+				title: "Open API",
+				icon: "fa-plug",
+				color: "from-brand-500/20 to-brand-600/5",
+				iconColor: "text-brand-400",
+				badgeColor: "bg-brand-500/10 border-brand-500/20 text-brand-400",
+				badge: "Integrasi Data",
+				desc: "Membuka API untuk mengintegrasikan data ke berbagai birokrasi guna pembuatan dashboard eksekutif sebagai dasar analisis dan pengambilan keputusan.",
+				image: `assets/img/project/openapi.png`
+			}
+		];
+		
+		const container = document.getElementById("services-links");
+		
+		container.innerHTML = services.map((service, index) => `
+			<div class="card-glow group"
+				data-aos="fade-up"
+				data-aos-delay="${index * 120}">
+				<div class="card-glow-inner flex flex-col h-full">
+		
+					<div class="flex items-start justify-between mb-8">
+						<div class="w-14 h-14 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center ${service.iconColor} text-xl border border-white/5 group-hover:scale-110 transition-transform duration-300">
+							<i class="fas ${service.icon}"></i>
+						</div>
+		
+						<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border ${service.badgeColor}">
+							${service.badge}
+						</span>
+					</div>
+		
+					<h3 class="text-2xl font-bold mb-3 text-white">
+						${service.title}
+					</h3>
+		
+					<p class="text-slate-400 font-medium leading-relaxed mb-8 grow text-sm">
+						${service.desc}
+					</p>
+		
+					<div class="rounded-2xl overflow-hidden aspect-video bg-slate-800 mb-6 border border-white/5 relative">
+						<img src="${service.image}"
+							alt="${service.title}"
+							class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+		
+						<div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
+					</div>
+		
+				</div>
+			</div>
+		`).join("");
+		
+		const steps = [
+			{
+				icon: "fa-code-commit",
+				color: "from-brand-500 to-brand-700",
+				shadow: "shadow-brand-500/30",
+				title: "IT Programmer",
+				desc: `Saya seorang <b>IT Programmer</b> di sebuah instansi kesehatan di Kabupaten Tangerang, dengan beberapa tahun pengalaman dalam pengembangan perangkat lunak berbasis web.`
+			},
+			{
+				icon: "fa-gear",
+				color: "from-violet-500 to-violet-700",
+				shadow: "shadow-violet-500/30",
+				title: "Spesialisasi & Tech Stack Inti",
+				desc: `
+					Arsitektur dalam spesialisasi saya adalah pengembangan sistem menggunakan
+					<b>PHP</b> dengan framework <b>CodeIgniter</b> dan terkadang <b>Laravel</b>.
+		
+					<ul class="text-slate-400 text-xs list-disc pl-5 mt-3 text-left space-y-1">
+						<li><b>Backend</b> : PHP (CodeIgniter, Laravel), Node.js, RESTful API Development.</li>
+						<li><b>Database</b> : MySQL/MariaDB, PostgreSQL (Perancangan, Normalisasi, Query Optimization).</li>
+						<li><b>Frontend</b> : HTML, CSS, JavaScript, Bootstrap, Tailwind CSS.</li>
+						<li><b>Metodologi</b> : Clean Code & Software Development Life Cycle (SDLC).</li>
+					</ul>
+				`
+			},
+			{
+				icon: "fa-rocket",
+				color: "from-emerald-500 to-teal-700",
+				shadow: "shadow-emerald-500/30",
+				title: "Kontribusi Profesional",
+				desc: `Bertanggung jawab dalam siklus pengembangan aplikasi internal instansi, mulai dari penambahan maupun perubahan modul hingga pengembangan API untuk integrasi dengan pihak eksternal guna meningkatkan efisiensi operasional dan mendukung pengambilan keputusan berbasis data.`
+			},
+			{
+				icon: "fa-code-merge",
+				color: "from-violet-500 to-violet-700",
+				shadow: "shadow-indigo-500/30",
+				title: "Mari Terkoneksi",
+				desc: `Saya selalu terbuka untuk kolaborasi, diskusi, maupun peluang profesional baru dalam menghadapi perkembangan teknologi yang terus berkembang.`
+			}
+		];
+		
+		const stepsContainer = document.getElementById("aboutme-links");
+		
+		stepsContainer.innerHTML = steps.map((step, index) => `
+			<div class="card-glow group"
+				data-aos="fade-up"
+				data-aos-delay="${index * 150}">
+		
+				<div class="card-glow-inner text-center">
+		
+					<div class="relative inline-flex mb-8">
+						<div class="w-20 h-20 rounded-2xl bg-gradient-to-br ${step.color}
+									flex items-center justify-center text-white text-2xl
+									shadow-2xl ${step.shadow}
+									group-hover:scale-110 transition-transform duration-300">
+		
+							<i class="fas ${step.icon}"></i>
+						</div>
+					</div>
+		
+					<h3 class="text-xl font-bold text-white mb-3">
+						${step.title}
+					</h3>
+		
+					<div class="text-slate-400 text-sm leading-relaxed">
+						${step.desc}
+					</div>
+		
+				</div>
+			</div>
+		`).join("");
+		
+		const features = [
+			{ icon: "fa-brands fa-php", label: "PHP Framework" },
+			{ icon: "fa-brands fa-node-js", label: "Node.js Runtime" },
+			{ icon: "fa-chart-line", label: "Advanced Analytics" },
+			{ icon: "fa-brands fa-css3-alt", label: "Tailwind CSS" },
+			{ icon: "fa-brands fa-bootstrap", label: "Bootstrap" },
+			{ icon: "fa-code", label: "Clean Code" },
+			{ icon: "fa-brands fa-connectdevelop", label: "Custom Code" },
+			{ icon: "fa-plug", label: "API Integrations" },
+		
+			// Duplikat agar marquee berjalan mulus (seamless)
+			{ icon: "fa-brands fa-php", label: "PHP Framework" },
+			{ icon: "fa-brands fa-node-js", label: "Node.js Runtime" },
+			{ icon: "fa-chart-line", label: "Advanced Analytics" },
+			{ icon: "fa-brands fa-css3-alt", label: "Tailwind CSS" },
+			{ icon: "fa-brands fa-bootstrap", label: "Bootstrap" },
+			{ icon: "fa-code", label: "Clean Code" },
+			{ icon: "fa-brands fa-connectdevelop", label: "Custom Code" },
+			{ icon: "fa-plug", label: "API Integrations" }
+		];
+		
+		const marqueeTrack = document.getElementById("marquee-track");
+		
+		marqueeTrack.innerHTML = features.map(feature => `
+			<div class="flex items-center gap-3 px-8 flex-shrink-0">
+				<i class="fas ${feature.icon} text-brand-500 text-xs"></i>
+				<span class="text-sm font-semibold text-slate-400 whitespace-nowrap">
+					${feature.label}
+				</span>
+				<span class="ml-6 text-white/10 text-xl font-thin">|</span>
+			</div>
+		`).join("");
+
 		$(function(){
 			AOS.init({ duration: 800, once: true, offset: 40 });
 		});
