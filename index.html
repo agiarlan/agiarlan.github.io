@@ -12,6 +12,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 	<style>
 		:root { --brand-primary: #295af3; }
 		body { font-family: 'Inter', 'Space Grotesk', sans-serif; }
@@ -158,7 +160,7 @@
 			</div>
 		</footer>
 	</main>
-
+	
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -466,126 +468,10 @@
 	</script>
 
 	<script type="text/javascript">
-		/* ========== SCROLL PROGRESS ========== */
-		window.addEventListener('scroll', () => {
-			const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-			const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-			document.getElementById('scrollProgress').style.width = ((scrollTop / height) * 100) + '%';
-
-			/* Navbar shrink on scroll */
-			const nav = document.getElementById('navbar');
-			if (scrollTop > 60) {
-				nav.style.paddingTop = '0.6rem';
-				nav.style.paddingBottom = '0.6rem';
-			} else {
-				nav.style.paddingTop = '';
-				nav.style.paddingBottom = '';
-			}
-		});
-
-		/* ========== AOS INIT ========== */
-		$(function(){
-			AOS.init({ duration: 800, once: true, offset: 40 });
-		});
-
-		/* ========== HERO MOUSE SPOTLIGHT ========== */
-		(function() {
-			const hero = document.querySelector('section.aurora');
-			const spotlight = document.getElementById('hero-spotlight');
-			if (!hero || !spotlight) return;
-			hero.addEventListener('mousemove', (e) => {
-				const rect = hero.getBoundingClientRect();
-				const x = ((e.clientX - rect.left) / rect.width) * 100;
-				const y = ((e.clientY - rect.top) / rect.height) * 100;
-				spotlight.style.background = `radial-gradient(400px circle at ${x}% ${y}%, rgba(41,90,243,0.13) 0%, transparent 70%)`;
-			});
-			hero.addEventListener('mouseleave', () => {
-				spotlight.style.background = 'radial-gradient(400px circle at 50% 50%, rgba(41,90,243,0.08) 0%, transparent 70%)';
-			});
-		})();
-
-		/* ========== 3D CARD TILT ========== */
-		(function() {
-			const cards = document.querySelectorAll('.card-glow');
-			cards.forEach(card => {
-				card.addEventListener('mousemove', (e) => {
-					const rect = card.getBoundingClientRect();
-					const x = e.clientX - rect.left;
-					const y = e.clientY - rect.top;
-					const cx = rect.width / 2;
-					const cy = rect.height / 2;
-					const rotX = ((y - cy) / cy) * -7;
-					const rotY = ((x - cx) / cx) * 7;
-					card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02,1.02,1.02)`;
-					card.style.transition = 'transform 0.05s linear';
-
-					/* Card inner spotlight */
-					const pctX = (x / rect.width) * 100;
-					const pctY = (y / rect.height) * 100;
-					card.style.background = `radial-gradient(circle at ${pctX}% ${pctY}%, rgba(255,255,255,0.05) 0%, transparent 60%), linear-gradient(to bottom right, rgba(255,255,255,0.1), transparent, rgba(41,90,243,0.2))`;
-				});
-				card.addEventListener('mouseleave', () => {
-					card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
-					card.style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1)';
-					card.style.background = '';
-				});
-			});
-		})();
-
-		/* ========== ANIMATED STAT COUNTERS ========== */
-		(function() {
-			const counters = document.querySelectorAll('[data-counter]');
-			if (!counters.length) return;
-			const obs = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-					if (!entry.isIntersecting) return;
-					const el = entry.target;
-					const target = parseFloat(el.dataset.counter);
-					const suffix = el.dataset.suffix;
-					if (target === 0) return; /* skip static ones like 0.2s, 24/7 */
-					let start = 0;
-					const duration = 1800;
-					const step = 16;
-					const increment = target / (duration / step);
-					const timer = setInterval(() => {
-						start += increment;
-						if (start >= target) {
-							el.textContent = (Number.isInteger(target) ? Math.ceil(start) : target.toFixed(1)) + suffix;
-							clearInterval(timer);
-						} else {
-							el.textContent = (Number.isInteger(target) ? Math.floor(start) : start.toFixed(1)) + suffix;
-						}
-					}, step);
-					obs.unobserve(el);
-				});
-			}, { threshold: 0.5 });
-			counters.forEach(el => obs.observe(el));
-		})();
-
-		/* ========== TYPEWRITER ON HERO BADGE ========== */
-		(function() {
-			const el = document.querySelector('[data-typewriter]');
-			if (!el) return;
-			const phrases = ['Platform v3.5 — Now Live', 'Precision. Speed. Scale.', 'Trusted by 500+ Businesses', 'Built for the Future.'];
-			let phraseIdx = 0, charIdx = 0, deleting = false;
-			function tick() {
-				const phrase = phrases[phraseIdx];
-				if (deleting) {
-					el.textContent = phrase.substring(0, charIdx--);
-					if (charIdx < 0) { deleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; charIdx = 0; setTimeout(tick, 600); return; }
-					setTimeout(tick, 40);
-				} else {
-					el.textContent = phrase.substring(0, ++charIdx);
-					if (charIdx === phrase.length) { deleting = true; setTimeout(tick, 2000); return; }
-					setTimeout(tick, 70);
-				}
-			}
-			setTimeout(tick, 1500);
-		})();
-
-		function subscribe(){
-			window.open("https://wa.me/62895330412018?text=Halo%20saya%20ingin%20berbincang%20dengan%20anda", "_blank");
-		}
+		window.addEventListener('scroll',()=>{const scrollTop=document.documentElement.scrollTop||document.body.scrollTop;const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;document.getElementById('scrollProgress').style.width=((scrollTop/height)*100)+'%';const nav=document.getElementById('navbar');if(scrollTop>60){nav.style.paddingTop='0.6rem';nav.style.paddingBottom='0.6rem'}else{nav.style.paddingTop='';nav.style.paddingBottom=''}});$(function(){AOS.init({duration:800,once:!0,offset:40});Swal.fire({title:"Hi",text:"Click look button to check my cv.",backdrop:!1,showCancelButton:!0,confirmButtonText:'Look',icon:"success"}).then((x)=>{if(x.isConfirmed){Swal.fire({imageUrl:"assets/img/profile/agiArlanCv.png",imageWidth:450,imageHeight:600,backdrop:!1,showCancelButton:!0,confirmButtonText:'Download',cancelButtonText:'Cancel'}).then((v)=>{if(v.isConfirmed){const{jsPDF}=window.jspdf;const img=new Image();img.src="assets/img/profile/agiArlanCv.png";img.onload=function(){const pdf=new jsPDF({orientation:"portrait",unit:"mm",format:"a4"});const pageWidth=210;const pageHeight=297;pdf.addImage(img,"PNG",0,0,pageWidth,pageHeight);pdf.save("Agil-Arlan-CV.pdf")}}})}})});(function(){const hero=document.querySelector('section.aurora');const spotlight=document.getElementById('hero-spotlight');if(!hero||!spotlight)return;hero.addEventListener('mousemove',(e)=>{const rect=hero.getBoundingClientRect();const x=((e.clientX-rect.left)/rect.width)*100;const y=((e.clientY-rect.top)/rect.height)*100;spotlight.style.background=`radial-gradient(400px circle at ${x}% ${y}%, rgba(41,90,243,0.13) 0%, transparent 70%)`});hero.addEventListener('mouseleave',()=>{spotlight.style.background='radial-gradient(400px circle at 50% 50%, rgba(41,90,243,0.08) 0%, transparent 70%)'})})();(function(){const cards=document.querySelectorAll('.card-glow');cards.forEach(card=>{card.addEventListener('mousemove',(e)=>{const rect=card.getBoundingClientRect();const x=e.clientX-rect.left;const y=e.clientY-rect.top;const cx=rect.width/2;const cy=rect.height/2;const rotX=((y-cy)/cy)*-7;const rotY=((x-cx)/cx)*7;card.style.transform=`perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02,1.02,1.02)`;card.style.transition='transform 0.05s linear';const pctX=(x/rect.width)*100;const pctY=(y/rect.height)*100;card.style.background=`radial-gradient(circle at ${pctX}% ${pctY}%, rgba(255,255,255,0.05) 0%, transparent 60%), linear-gradient(to bottom right, rgba(255,255,255,0.1), transparent, rgba(41,90,243,0.2))`});card.addEventListener('mouseleave',()=>{card.style.transform='perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';card.style.transition='transform 0.5s cubic-bezier(0.23,1,0.32,1)';card.style.background=''})})})();(function(){const counters=document.querySelectorAll('[data-counter]');if(!counters.length)return;const obs=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;const el=entry.target;const target=parseFloat(el.dataset.counter);const suffix=el.dataset.suffix;if(target===0)return;let start=0;const duration=1800;const step=16;const increment=target/(duration/step);const timer=setInterval(()=>{start+=increment;if(start>=target){el.textContent=(Number.isInteger(target)?Math.ceil(start):target.toFixed(1))+suffix;clearInterval(timer)}else{el.textContent=(Number.isInteger(target)?Math.floor(start):start.toFixed(1))+suffix}},step);obs.unobserve(el)})},{threshold:0.5});counters.forEach(el=>obs.observe(el))})();(function(){const el=document.querySelector('[data-typewriter]');if(!el)return;const phrases=['Platform v3.5 — Now Live','Precision. Speed. Scale.','Trusted by 500+ Businesses','Built for the Future.'];let phraseIdx=0,charIdx=0,deleting=!1;function tick(){const phrase=phrases[phraseIdx];if(deleting){el.textContent=phrase.substring(0,charIdx--);if(charIdx<0){deleting=!1;phraseIdx=(phraseIdx+1)%phrases.length;charIdx=0;setTimeout(tick,600);return}
+		setTimeout(tick,40)}else{el.textContent=phrase.substring(0,++charIdx);if(charIdx===phrase.length){deleting=!0;setTimeout(tick,2000);return}
+		setTimeout(tick,70)}}
+		setTimeout(tick,1500)})();function subscribe(){window.open("https://wa.me/62895330412018?text=Halo%20saya%20ingin%20berbincang%20dengan%20anda","_blank")}
 	</script>
 </body>
 </html>
